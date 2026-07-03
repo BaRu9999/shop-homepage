@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>祇園茶寮×タニタカフェ ららぽーと柏の葉店｜こころの健康、整える。</title>
+<title>祇園茶寮×タニタカフェ ららぽーと柏の葉店｜はかって、ととのう。</title>
 <meta name="description" content="祇園茶寮×タニタカフェ ららぽーと柏の葉店。国産食材にこだわった栄養バランスの良い和定食と、宇治抹茶のスイーツをお届けします。ららぽーと柏の葉3階。">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -106,3 +106,606 @@
   nav.main-nav a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--kin);transition:width .3s ease;}
   nav.main-nav a:hover::after{width:100%;}
   .nav-tel{display:flex; align-items:center; gap:26px;}
+  .nav-tel a.tel{color:var(--kin); font-family:'DotGothic16',monospace; text-decoration:none; font-size:.92rem;}
+  .menu-toggle{display:none; position:relative; z-index:2; background:none; border:1px solid rgba(245,240,228,.4); color:var(--kinari); width:42px; height:42px; border-radius:2px; cursor:pointer;}
+
+  @media (max-width: 900px){
+    nav.main-nav{position:fixed; top:0; right:0; height:100vh; width:min(78vw,320px); background:var(--sumikon); flex-direction:column; justify-content:center; align-items:flex-start; padding:0 40px; gap:26px; transform:translateX(100%); transition:transform .4s ease; box-shadow:-10px 0 30px rgba(0,0,0,.3);}
+    nav.main-nav.is-open{transform:translateX(0);}
+    .nav-tel{display:none;}
+    .menu-toggle{display:block;}
+  }
+
+  /* ---------- Ruler / signature divider ---------- */
+  .ruler{position:relative; height:34px; max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+  .ruler::before{
+    content:"";
+    position:absolute; left:28px; right:28px; bottom:6px; height:20px;
+    background:
+      repeating-linear-gradient(to right, var(--kin) 0 1px, transparent 1px 16px) bottom / 100% 9px no-repeat,
+      repeating-linear-gradient(to right, var(--kin) 0 1.5px, transparent 1.5px 64px) bottom / 100% 18px no-repeat;
+    opacity:.5;
+  }
+  .ruler__stamp{
+    position:absolute; bottom:-2px; transform:translateX(-50%);
+    width:40px; height:40px; border-radius:50%;
+    border:1.4px solid var(--shu); color:var(--shu);
+    background:var(--kinari);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Shippori Mincho',serif; font-size:18px; font-weight:700;
+    box-shadow:0 4px 10px rgba(0,0,0,.08);
+  }
+  .ruler--dark::before{opacity:.35;}
+  .ruler--dark{background:var(--sumikon);}
+  .ruler--dark .ruler__stamp{background:var(--sumikon); color:var(--kin); border-color:var(--kin);}
+  section.on-dark + .ruler--dark, .ruler--dark{background:var(--sumikon);}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    background:
+      radial-gradient(ellipse at 18% 8%, rgba(176,141,63,.16), transparent 55%),
+      linear-gradient(180deg, var(--sumikon) 0%, var(--sumikon-2) 100%);
+    color:var(--kinari);
+    padding:180px 0 90px;
+    overflow:hidden;
+  }
+  .hero .container{display:grid; grid-template-columns:1.15fr .85fr; gap:56px; align-items:center;}
+  .hero h1{
+    color:var(--kinari);
+    font-size:clamp(2.6rem, 5vw, 4rem);
+    font-weight:800;
+    line-height:1.2;
+    margin:20px 0 22px;
+    text-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+  .hero h1 em{
+    font-style:normal;
+    color:var(--kin);
+  }
+  .hero p.lead{
+    color:rgba(245,240,228,.9);
+    font-size:1.05rem;
+    max-width:46ch;
+    margin-bottom:40px;
+  }
+  .hero .cta-row{display:flex; gap:16px; flex-wrap:wrap;}
+
+  /* Gauge signature element */
+  .gauge-wrap{display:flex; flex-direction:column; align-items:center; gap:18px;}
+  .gauge{width:min(300px,80vw); position:relative; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));}
+  .gauge svg{width:100%; height:auto; display:block;}
+  .gauge-needle{transform-origin:140px 140px; transform:rotate(-92deg); animation:needleSweep 2s cubic-bezier(.2,.9,.25,1) .4s forwards;}
+  @keyframes needleSweep{
+    0%{transform:rotate(-92deg);}
+    50%{transform:rotate(50deg);}
+    100%{transform:rotate(18deg);}
+  }
+  .gauge-caption{
+    font-family:'DotGothic16',monospace;
+    font-size:.85rem;
+    letter-spacing:.16em;
+    color:var(--kin);
+    text-align:center;
+  }
+  .gauge-caption strong{display:block; color:var(--kinari); font-family:'Shippori Mincho',serif; font-size:1.1rem; letter-spacing:.1em; margin-top:8px;}
+
+  @media (max-width:900px){
+    .hero .container{grid-template-columns:1fr; text-align:center;}
+    .hero p.lead{margin-left:auto; margin-right:auto;}
+    .hero .cta-row{justify-content:center;}
+    .gauge-wrap{order:-1;}
+  }
+
+  /* ---------- Section shared ---------- */
+  .section{padding:100px 0;}
+  .section-head{max-width:640px; margin:0 auto 60px;}
+  .section-head.center{text-align:center; margin-left:auto; margin-right:auto;}
+  .section-head h2{font-size:clamp(1.8rem,3vw,2.4rem); margin-top:14px;}
+  .section-head p{color:var(--sumi-soft); margin-top:16px; font-size:1rem;}
+
+  /* ---------- Concept ---------- */
+  .concept .container{display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items:center;}
+  .concept-copy p{color:var(--sumi-soft); margin-bottom:18px; text-align: justify;}
+  .chip-row{display:flex; gap:12px; flex-wrap:wrap; margin-top:32px;}
+  .chip{
+    font-family:'DotGothic16',monospace;
+    font-size:.8rem; letter-spacing:.1em;
+    padding:.6em 1.2em;
+    border:1px solid var(--matcha);
+    color:var(--matcha-d);
+    border-radius:20px;
+    background:rgba(95,115,80,.08);
+    transition: background 0.3s, color 0.3s;
+  }
+  .chip:hover {
+    background: var(--matcha);
+    color: var(--kinari);
+  }
+  .photo-frame{
+    position:relative;
+    aspect-ratio:4/5;
+    border:2px solid var(--kin);
+    padding:16px;
+    background: var(--kinari);
+    transform: rotate(2deg);
+    transition: transform 0.4s;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  }
+  .photo-frame:hover {
+    transform: rotate(0deg) scale(1.02);
+  }
+  .photo-frame .ph-inner{
+    width:100%; height:100%;
+    background:
+      linear-gradient(135deg, rgba(95,115,80,.22), rgba(176,141,63,.22)),
+      repeating-linear-gradient(135deg, rgba(43,38,33,.05) 0 2px, transparent 2px 22px);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--sumi-soft);
+    font-family:'DotGothic16',monospace;
+    font-size:.85rem;
+    text-align:center;
+    letter-spacing:.08em;
+    padding:20px;
+  }
+  @media (max-width:900px){
+    .concept .container{grid-template-columns:1fr;}
+    .photo-frame{order:-1; max-width:380px; margin:0 auto; transform: rotate(0deg);}
+  }
+
+  /* ---------- Menu ---------- */
+  .menu{background:var(--kinari-2); position: relative;}
+  .menu::before {
+    content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background-image: radial-gradient(var(--kin) 1px, transparent 1px);
+    background-size: 40px 40px; opacity: 0.1; pointer-events: none;
+  }
+  .menu .container { position: relative; z-index: 1; }
+
+  .tabs{display:flex; justify-content:center; gap:12px; margin-bottom:50px;}
+  .tab-btn{
+    font-family:'Shippori Mincho',serif;
+    font-size:1.05rem;
+    background:var(--kinari); border:1px solid var(--sumikon);
+    color:var(--sumikon);
+    padding:.8em 2.5em;
+    cursor:pointer;
+    letter-spacing:.08em;
+    border-radius: 30px;
+    transition:all .3s ease;
+  }
+  .tab-btn[aria-selected="true"]{background:var(--sumikon); color:var(--kinari); box-shadow: 0 4px 10px rgba(0,0,0,0.15);}
+  .tab-btn:hover:not([aria-selected="true"]){ background: rgba(30,43,36,0.1); }
+  .tab-btn:focus-visible{outline:2px solid var(--kin); outline-offset:2px;}
+
+  .menu-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:30px;}
+  .menu-panel{display:none;}
+  .menu-panel.is-active{display:grid; grid-template-columns:repeat(3,1fr); gap:30px; animation: fadeIn 0.5s ease;}
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .dish-card{
+    background:var(--kinari);
+    border:1px solid var(--line);
+    padding:35px 26px;
+    position:relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .dish-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+  }
+  .dish-card .badge{
+    position:absolute; top:-12px; right:20px;
+    background:var(--shu); color:var(--kinari);
+    font-family:'DotGothic16',monospace;
+    font-size:.75rem; letter-spacing:.1em;
+    padding:.4em 1em;
+    border-radius: 2px;
+  }
+  .dish-card h3{font-size:1.2rem; margin-bottom:12px; border-bottom: 1px solid var(--line); padding-bottom: 10px;}
+  .dish-card p{color:var(--sumi-soft); font-size:.9rem; margin-bottom:20px; min-height:4em;}
+  .dish-card .price{
+    font-family:'DotGothic16',monospace;
+    color:var(--matcha-d);
+    font-size:1.1rem;
+    letter-spacing:.06em;
+    text-align: right;
+  }
+  .menu-note{text-align:center; color:var(--sumi-soft); font-size:.85rem; margin-top:40px;}
+
+  @media (max-width:900px){
+    .menu-panel.is-active{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:560px){
+    .menu-panel.is-active{grid-template-columns:1fr;}
+    .tabs{gap:8px;}
+    .tab-btn{padding:.65em 1.4em; font-size:.92rem;}
+  }
+
+  /* ---------- Access ---------- */
+  .access .container{display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items: center;}
+  .info-list{list-style:none; margin:0 0 30px; padding:0;}
+  .info-list li{display:grid; grid-template-columns:100px 1fr; gap:18px; padding:18px 0; border-bottom:1px solid var(--line);}
+  .info-list li .label{font-family:'DotGothic16',monospace; font-size:.85rem; color:var(--kin); letter-spacing:.08em; padding-top:2px;}
+  .info-list li .val{color:var(--sumi); font-size: 1rem;}
+  .hours-table{width:100%; border-collapse:collapse; margin-bottom:16px;}
+  .hours-table td{padding:12px 4px; border-bottom:1px solid var(--line); font-size:.95rem;}
+  .hours-table td:last-child{text-align:right; font-family:'DotGothic16',monospace; color:var(--matcha-d);}
+  .access-note{font-size:.85rem; color:var(--sumi-soft);}
+  .map-frame{
+    border:1px solid var(--kin); aspect-ratio:1/1; position:relative;
+    background:
+      linear-gradient(var(--line) 1px, transparent 1px) 0 0/40px 40px,
+      linear-gradient(90deg, var(--line) 1px, transparent 1px) 0 0/40px 40px,
+      var(--kinari);
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:20px; text-align:center; padding:30px;
+    box-shadow: inset 0 0 40px rgba(0,0,0,0.02);
+  }
+  .map-frame .pin{width:18px; height:18px; border-radius:50% 50% 50% 0; background:var(--shu); transform:rotate(-45deg); animation: bounce 2s infinite ease-in-out;}
+  
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0) rotate(-45deg); }
+    50% { transform: translateY(-10px) rotate(-45deg); }
+  }
+
+  .map-frame p{font-size:.9rem; color:var(--sumi-soft); max-width:26ch; font-weight: 500;}
+
+  @media (max-width:900px){
+    .access .container{grid-template-columns:1fr;}
+    .map-frame{order:-1; max-width:450px; margin:0 auto; width:100%;}
+  }
+
+  /* ---------- News ---------- */
+  .news{background:var(--kinari-2);}
+  .news-row{display:grid; grid-template-columns:repeat(3,1fr); gap:30px;}
+  .news-card{
+    background:var(--kinari); 
+    border:1px solid var(--line); 
+    padding:35px 26px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .news-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+  }
+  .news-card .tag{font-family:'DotGothic16',monospace; font-size:.75rem; color:var(--kin); letter-spacing:.12em; display: inline-block; border-bottom: 1px solid var(--kin); padding-bottom: 2px; margin-bottom: 8px;}
+  .news-card h3{font-size:1.1rem; margin:12px 0 12px; font-weight:700;}
+  .news-card p{color:var(--sumi-soft); font-size:.9rem;}
+  @media (max-width:900px){.news-row{grid-template-columns:1fr;}}
+
+  /* ---------- LINE CTA ---------- */
+  .line-cta{
+    background:linear-gradient(180deg, var(--sumikon) 0%, var(--sumikon-2) 100%);
+    color:var(--kinari);
+    position: relative;
+    overflow: hidden;
+  }
+  .line-cta::before {
+    content: ""; position: absolute; right: -10%; top: -50%; width: 400px; height: 400px;
+    border-radius: 50%; background: radial-gradient(circle, rgba(176,141,63,0.1) 0%, transparent 70%);
+  }
+  .line-cta .container{display:grid; grid-template-columns:1fr auto; gap:60px; align-items:center; position: relative; z-index: 1;}
+  .line-cta h2{color:var(--kinari);}
+  .line-cta p{color:rgba(245,240,228,.85); max-width:42ch; margin-top:20px;}
+  .qr-box{
+    width:180px; height:180px; background:var(--kinari); border:2px solid var(--kin);
+    display:flex; align-items:center; justify-content:center; flex-direction:column; gap:8px;
+    color:var(--sumi-soft); font-family:'DotGothic16',monospace; font-size:.75rem; text-align:center; padding:10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  }
+  .line-cta .cta-row{margin-top:35px;}
+  @media (max-width:900px){
+    .line-cta .container{grid-template-columns:1fr; text-align:center;}
+    .qr-box{margin:0 auto;}
+    .line-cta .cta-row{justify-content:center;}
+  }
+
+  /* ---------- Footer ---------- */
+  footer{background:#16201A; color:rgba(245,240,228,.7); padding:60px 0 35px; font-size:.9rem;}
+  footer .container{display:flex; justify-content:space-between; flex-wrap:wrap; gap:30px; border-bottom:1px solid rgba(245,240,228,.12); padding-bottom:40px;}
+  footer .f-brand strong{display:block; color:var(--kinari); font-family:'Shippori Mincho',serif; font-size:1.2rem; margin-bottom:10px;}
+  footer .f-social{display:flex; gap:16px; align-items: center;}
+  footer .f-social a{display:flex; align-items:center; justify-content:center; width:42px; height:42px; border:1px solid rgba(245,240,228,.3); border-radius:50%; text-decoration:none; color:var(--kinari); transition:all .3s ease;}
+  footer .f-social a:hover{border-color:var(--kin); color:var(--kin); transform: translateY(-3px);}
+  footer .copyright{text-align:center; margin-top:30px; font-size:.8rem; letter-spacing:.06em; color:rgba(245,240,228,.45);}
+
+  /* ---------- Reveal on scroll ---------- */
+  .reveal{opacity:0; transform:translateY(30px); transition:opacity .8s ease-out, transform .8s ease-out;}
+  .reveal.is-visible{opacity:1; transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<header id="site-header">
+  <div class="container">
+    <a class="logo" href="#hero">
+      <strong>祇園茶寮 × タニタカフェ</strong>
+      <span>ららぽーと柏の葉店</span>
+    </a>
+    <nav class="main-nav" id="main-nav">
+      <a href="#concept">こだわり</a>
+      <a href="#menu">メニュー</a>
+      <a href="#access">アクセス</a>
+      <a href="#news">最新情報</a>
+      <a href="#line">LINE</a>
+    </nav>
+    <div class="nav-tel">
+      <a class="tel" href="tel:0471681540">☎ 04-7168-1540</a>
+      <a class="btn btn-primary" href="#line">友だち追加</a>
+    </div>
+    <button class="menu-toggle" id="menu-toggle" aria-label="メニューを開く" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<section class="hero" id="hero">
+  <div class="container">
+    <div class="hero-copy">
+      <span class="eyebrow">GION SARYO × TANITA CAFE</span>
+      <h1>はかって、<br><em>ととのう。</em></h1>
+      <p class="lead">一皿ごとの栄養バランスを大切に。国産食材の和定食と、宇治抹茶のスイーツを、ららぽーと柏の葉3階でお届けします。</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#menu">メニューを見る</a>
+        <a class="btn btn-ghost" href="#access">アクセス</a>
+      </div>
+    </div>
+    <div class="gauge-wrap">
+      <div class="gauge">
+        <svg viewBox="0 0 280 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 160 A120 120 0 0 1 260 160" stroke="#B08D3F" stroke-opacity=".35" stroke-width="1.5"/>
+          <path d="M20 160 A120 120 0 0 1 260 160" stroke="#B08D3F" stroke-width="1.5" stroke-dasharray="4 10" stroke-opacity=".55"/>
+          <g class="gauge-needle">
+            <line x1="140" y1="160" x2="140" y2="52" stroke="#9C4530" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="140" cy="160" r="8" fill="#9C4530"/>
+          </g>
+          <circle cx="140" cy="160" r="3" fill="#F5F0E4"/>
+        </svg>
+      </div>
+      <div class="gauge-caption">BALANCE<strong>からだに、ちょうどいい。</strong></div>
+    </div>
+  </div>
+</section>
+
+<div class="ruler ruler--dark" aria-hidden="true">
+  <span class="ruler__stamp" style="left:30%;">和</span>
+  <span class="ruler__stamp" style="left:70%;">健</span>
+</div>
+
+<section class="section concept" id="concept">
+  <div class="container">
+    <div class="concept-copy reveal">
+      <span class="eyebrow">CONCEPT</span>
+      <h2>「はかる」ことは、<br>「想う」こと。</h2>
+      <p>祇園茶寮の和食の技と、体組成計づくりで培われたタニタの健康ノウハウ。ふたつの知恵が出会うこの店では、一皿ごとに栄養バランスを考えながら献立を組み立てています。</p>
+      <p>彩り豊かな野菜、雑穀ごはん、だしの効いた副菜。目にも、からだにもここちよい定食と、宇治抹茶のスイーツを、ゆったりとした店内でお楽しみください。</p>
+      <div class="chip-row">
+        <span class="chip">国産食材</span>
+        <span class="chip">栄養バランス設計</span>
+        <span class="chip">宇治抹茶</span>
+        <span class="chip">お子様連れ歓迎</span>
+      </div>
+    </div>
+    <div class="photo-frame reveal">
+      <div class="ph-inner">
+        店舗写真<br>ここに挿入
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ruler" aria-hidden="true">
+  <span class="ruler__stamp" style="left:50%;">味</span>
+</div>
+
+<section class="section menu" id="menu">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">MENU</span>
+      <h2>定食とスイーツ</h2>
+      <p>国産食材にこだわった和定食と、宇治抹茶を使ったスイーツをご用意しています。</p>
+    </div>
+
+    <div class="tabs reveal" role="tablist" aria-label="メニュー切り替え">
+      <button class="tab-btn" role="tab" id="tab-set" aria-selected="true" aria-controls="panel-set">定食</button>
+      <button class="tab-btn" role="tab" id="tab-sweets" aria-selected="false" aria-controls="panel-sweets">スイーツ</button>
+    </div>
+
+    <div class="menu-panel is-active reveal" id="panel-set" role="tabpanel" aria-labelledby="tab-set">
+      <div class="dish-card">
+        <span class="badge">人気</span>
+        <h3>彩り野菜と十六穀ご膳</h3>
+        <p>彩り野菜、蓮根チップス、十六穀ごはんを盛り合わせた、栄養バランスを考えた御膳です。</p>
+        <div class="price">¥1,200〜(仮)</div>
+      </div>
+      <div class="dish-card">
+        <span class="badge">人気</span>
+        <h3>カニクリームコロッケ定食</h3>
+        <p>口コミでも評判の濃厚なカニクリームコロッケに、彩り野菜と雑穀ごはんを添えて。</p>
+        <div class="price">¥1,400〜(仮)</div>
+      </div>
+      <div class="dish-card">
+        <h3>おこさま定食</h3>
+        <p>お子様連れのお客様に。時間帯によっては無料となるサービスもございます。</p>
+        <div class="price">店頭にてご案内</div>
+      </div>
+    </div>
+
+    <div class="menu-panel" id="panel-sweets" role="tabpanel" aria-labelledby="tab-sweets" hidden>
+      <div class="dish-card">
+        <h3>宇治抹茶パフェ</h3>
+        <p>宇治抹茶を贅沢に使った、香り高い一品。甘さ控えめで食後にもぴったりです。</p>
+        <div class="price">¥900〜(仮)</div>
+      </div>
+      <div class="dish-card">
+        <h3>宇治抹茶テリーヌ</h3>
+        <p>なめらかな口どけの抹茶テリーヌ。濃厚な抹茶の風味をじっくりとお楽しみください。</p>
+        <div class="price">¥700〜(仮)</div>
+      </div>
+      <div class="dish-card">
+        <h3>抹茶チーズケーキ</h3>
+        <p>抹茶のほろ苦さとチーズのコクが重なる、定番の人気スイーツです。</p>
+        <div class="price">¥700〜(仮)</div>
+      </div>
+    </div>
+
+    <p class="menu-note">※価格は一例です。最新のメニュー・価格は店頭にてご確認ください。</p>
+  </div>
+</section>
+
+<div class="ruler ruler--dark" aria-hidden="true">
+  <span class="ruler__stamp" style="left:50%;">匠</span>
+</div>
+
+<section class="section access" id="access">
+  <div class="container">
+    <div class="reveal">
+      <span class="eyebrow">ACCESS</span>
+      <h2 style="margin:16px 0 40px;">店舗情報・アクセス</h2>
+
+      <ul class="info-list">
+        <li><span class="label">住所</span><span class="val">〒277-0871<br>千葉県柏市若柴175<br>ららぽーと柏の葉 3階</span></li>
+        <li><span class="label">電話</span><span class="val"><a class="tel" href="tel:0471681540" style="color:var(--sumi); font-family:inherit;">04-7168-1540</a></span></li>
+        <li><span class="label">フロア</span><span class="val">ららぽーと柏の葉 3F</span></li>
+      </ul>
+
+      <table class="hours-table">
+        <tr><td>月・火・水・木・金</td><td>11:00 – 20:30</td></tr>
+        <tr><td>土・日・祝</td><td>11:00 – 21:30</td></tr>
+      </table>
+      <p class="access-note">※営業時間は変更になる場合があります。最新情報は店舗までお問い合わせください。</p>
+
+      <div class="cta-row" style="margin-top:40px;">
+        <a class="btn btn-primary" href="tel:0471681540">電話で問い合わせ</a>
+        <a class="btn btn-line" style="border-color:var(--sumikon);" href="#" target="_blank" rel="noopener">Googleマップで見る</a>
+      </div>
+    </div>
+
+    <div class="map-frame reveal" aria-hidden="true">
+      <div class="pin"></div>
+      <p>ららぽーと柏の葉 3階<br>祇園茶寮×タニタカフェ</p>
+    </div>
+  </div>
+</section>
+
+<section class="section news" id="news">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">NEWS</span>
+      <h2>最新情報・キャンペーン</h2>
+    </div>
+    <div class="news-row reveal">
+      <div class="news-card">
+        <span class="tag">CAMPAIGN</span>
+        <h3>来店ポイントキャンペーン実施中</h3>
+        <p>LINE公式アカウントのお友だち登録で、ご来店ごとにポイントが貯まります。</p>
+      </div>
+      <div class="news-card">
+        <span class="tag">NEW</span>
+        <h3>びわの葉茶、はじめました</h3>
+        <p>からだに嬉しい一杯を、お食事のお供にどうぞ。</p>
+      </div>
+      <div class="news-card">
+        <span class="tag">SEASON</span>
+        <h3>季節の抹茶スイーツ</h3>
+        <p>期間限定メニューは随時入れ替えご案内予定です。お楽しみに。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section line-cta" id="line">
+  <div class="container">
+    <div class="reveal">
+      <span class="eyebrow">LINE公式アカウント</span>
+      <h2>もっと、おとくに。</h2>
+      <p>お友だち追加で来店ポイントが貯まり、クーポンや最新情報もいち早くお届けします。</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#" target="_blank" rel="noopener">友だち追加はこちら</a>
+      </div>
+    </div>
+    <div class="qr-box reveal" id="line-qr" aria-hidden="true">
+      QRコード<br>ここに挿入
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="f-brand">
+      <strong>祇園茶寮 × タニタカフェ</strong>
+      ららぽーと柏の葉店 / 3階<br>
+      04-7168-1540
+    </div>
+    <div class="f-social">
+      <a href="#" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.6"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor"/></svg>
+      </a>
+      <a href="#" target="_blank" rel="noopener" aria-label="LINE公式アカウント">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9-.1.5-.6 2.1-.7 2.4 0 0-.1.4.2.5.3.1.7-.1.7-.1.9-.6 5-3.3 6.9-5.7 1.6-1.5 2.6-3.1 2.6-5 0-4.4-4.5-8-10-8z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+  <p class="copyright">© 2026 祇園茶寮×タニタカフェ ららぽーと柏の葉店</p>
+</footer>
+
+<script>
+  // Header shadow on scroll
+  const header = document.getElementById('site-header');
+  const onScroll = () => {
+    header.classList.toggle('is-scrolled', window.scrollY > 40);
+  };
+  document.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Mobile nav toggle
+  const nav = document.getElementById('main-nav');
+  const toggle = document.getElementById('menu-toggle');
+  toggle.addEventListener('click', () => {
+    const open = nav.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', open);
+    toggle.textContent = open ? '×' : '☰';
+  });
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    nav.classList.remove('is-open');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.textContent = '☰';
+  }));
+
+  // Menu tabs
+  const tabSet = document.getElementById('tab-set');
+  const tabSweets = document.getElementById('tab-sweets');
+  const panelSet = document.getElementById('panel-set');
+  const panelSweets = document.getElementById('panel-sweets');
+  function showTab(which){
+    const setActive = which === 'set';
+    tabSet.setAttribute('aria-selected', setActive);
+    tabSweets.setAttribute('aria-selected', !setActive);
+    panelSet.hidden = !setActive;
+    panelSweets.hidden = setActive;
+    panelSet.classList.toggle('is-active', setActive);
+    panelSweets.classList.toggle('is-active', !setActive);
+  }
+  tabSet.addEventListener('click', () => showTab('set'));
+  tabSweets.addEventListener('click', () => showTab('sweets'));
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.15});
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('is-visible'));
+  }
+</script>
+
+</body>
+</html>
